@@ -1,0 +1,154 @@
+@font-face {
+    font-family: 'Russo One';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/russoone/v16/Z9XUDmZRWg6M1LvRYsHOwcmJrrg.woff2) format('woff2');
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+  
+body {
+    margin: 0;
+    background-color: #F9F6EE;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.navbar {
+    margin: 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #86673E;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar a {
+    color: #F9F6EE;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+}
+
+.navbar a:hover {
+    background-color: goldenrod;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    padding: 20px;
+    color: #86673E;
+}
+
+.container .text h3 {
+    margin: 0;
+    padding-top: 20px;
+}
+
+.container .text h1 {
+    font-family: 'Russo One', sans-serif;
+    font-weight: 100;
+    font-size: 48px;
+    margin: 20px 0;
+}
+
+.container .image img {
+    border-radius: 50px;
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    margin-top: 20px;
+}
+
+.container1 {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.container1 h1 {
+    line-height: 1.2;
+    font-family: 'Russo One', sans-serif;
+    font-size: 64px;
+    font-weight: 100;
+    color: #86673E;
+}
+
+.container1 button {
+    background-color: #FFF1C2;
+    width: 196px;
+    height: 60px;
+    border-radius: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .container .text {
+        flex: 1;
+    }
+
+    .container .image {
+        flex: 1;
+    }
+
+    .container .text h1 {
+        font-size: 90px;
+    }
+
+    .container1 h1 {
+        font-size: 128px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navbar li {
+        width: 100%;
+    }
+
+    .container .text h1 {
+        font-size: 36px;
+    }
+
+    .container1 h1 {
+        font-size: 48px;
+    }
+
+    .container1 button {
+        width: 150px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container .text h1 {
+        font-size: 28px;
+    }
+
+    .container1 h1 {
+        font-size: 36px;
+    }
+
+    .container1 button {
+        width: 120px;
+        height: 45px;
+    }
+}
