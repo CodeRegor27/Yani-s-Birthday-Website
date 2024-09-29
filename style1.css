@@ -1,0 +1,500 @@
+body {
+    margin: 0;
+    background-color: #F9F6EE;
+    font-family: 'Noto Sans', sans-serif;
+    overflow: auto;
+}
+.offScreenMenu{
+    background-color:#86673E;
+    height:100vh;
+    width: 100%;
+    max-width: 350px;
+    position: fixed;
+    top: 0;
+    right: -450px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    transition: .3 ease;
+}
+.offScreenMenu.active{
+    right: 0;
+}
+.offScreenMenu li{
+    margin-top: 50px;
+    list-style-type: none;
+}
+.offScreenMenu a{
+    color: black;
+    text-decoration: none;
+}
+.offScreenMenu a:hover{
+    color:#F9F6EE;
+    text-decoration: underline;
+}
+.hamMenu{
+    height:50px;
+    width:50px;
+    margin-left: auto;
+    position: relative;
+    right: -450px;
+}
+.hamMenu span{
+    height: 5px;
+    width: 100%;
+    background-color: #F9F6EE;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: .3s ease;
+    z-index: 1;
+}
+.hamMenu span:nth-child(1){
+    top:25%;
+}
+.hamMenu span:nth-child(3){
+    top: 75%;
+}
+.hamMenu.active span:nth-child(1){
+    top: 50%;
+    transform: translate(-50%,50%) rotate(45deg);
+}
+.hamMenu.active span:nth-child(2){
+    opacity:0;
+}
+.hamMenu.active span:nth-child(3){
+    top: 50%;
+    transform: translate(-50%,50%) rotate(-45deg);
+}
+.navbar {
+    margin: 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 5px;
+    margin: 0;
+    background-color: #86673E;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navbar a {
+    color: #F9F6EE;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    transition: 0.5s
+}
+
+.navbar a:hover {
+    background-color: goldenrod;
+}
+.titleImagesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#title{
+    font-family: 'Russo One', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 100;
+    color:#86673E;
+    text-align: center;
+}
+.imageContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 33.33%;
+    gap: 10px;
+    opacity: 0; /* Start with element hidden */
+    transform: translateY(50px); /* Start with element below its final position */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition properties and duration */
+
+}
+.imageContainer.show {
+    opacity: 1; /* Make element visible */
+    transform: translateY(0); /* Move element to its final position */
+}
+.images{
+    flex-basis: calc(33.33% - 10px);
+    height: 200px;
+    width: 200px;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.buttons{
+    font-size: 1rem;
+    height: 3rem;
+    width: 6rem;
+    padding: 5px 10px;
+    background-color:#FFF1C2;
+    cursor: pointer
+}
+.buttons:hover:active{
+    background-color:#fcdf83;
+    font-size: 0.75rem;
+}
+#prevBtn{
+    margin-right: 35rem;
+}
+.image-text{
+    text-align: center;
+    margin: 5px 0px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.buttons.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.modalContainer{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.modal{
+    background-color: #fefefe;
+    width: 600px;
+    max-height: 80%;
+    overflow: auto;
+    max-width: 100%;
+    text-align: center;
+    padding: 30px 50px;
+    border-radius: 19px;
+}
+.modal h1{
+    padding-top: 30px;
+    font-size: 3rem;
+    font-family: 'Great Vibes',sans-serif;
+    font-weight: 100;
+}
+.modal p{
+    padding: 20px 60px;
+    margin-top: 2rem;
+    line-height: 150%;
+    text-align: justify;
+    font-family: 'Roboto',sans-serif;
+    font-size: 1.3rem;
+}
+.pagination{
+    display:flex;
+    justify-content: space-between;
+}
+.pagination button{
+    margin-top: 5rem;
+    width: 5.5rem;
+    height: 2.5rem;
+    padding: 5px 10px;
+    background-color: #fcdf83;
+    cursor: pointer;
+}
+.close{
+    color: #aaa;
+    float:right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,.close:focus{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modalButtons.disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.modalButtons:active{
+    font-size: 0.75rem;
+}
+#closing{
+    float: right;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 100;
+    font-family: 'Great Vibes',sans-serif;
+}
+
+@media (min-width:1384px) and (max-width:1700px){
+    .imageContainer{
+        width: 50%;
+    }
+    .image-text{
+        text-align: center;
+        margin: 5px 0px;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+    .hamMenu{
+        right: 0px;
+    }
+}
+
+@media (min-width:746px) and (max-width:1383px){
+    .imageContainer{
+        width: 55%;
+    }
+    .image-text{
+        text-align: center;
+        margin: 5px 0px;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+    .images{
+        flex-basis:calc(55%-10px)
+    }
+    .hamMenu{
+        right: 0px;
+    }
+
+}
+@media (min-width:640px) and (max-width:745px){
+    .images{
+        height: 120px;
+        width: 120px;
+        flex-basis: calc(50% - 10px);
+    }
+    #prevBtn{
+        margin-right: 11rem;
+    }
+    #title{
+        font-size:3rem;
+    }
+    .modal{
+        width:65%;
+        height:65%
+        
+    }
+    .modal p{
+        padding: 5px 0px;
+        margin-top: 2rem;
+        line-height: 150%;
+        text-align: justify;
+    }
+    nav{
+        padding:1rem;
+        display:flex;
+        background-color:#86673E;
+    }
+    .navbar a {
+        display: none;
+    }
+    .offScreenMenu{
+        width: 250px;
+        z-index: 1;
+    }
+    .offScreenMenu a{
+        font-size: 1.5rem;
+    }
+    .imageContainer{
+        width: 50%;
+    }
+    .image-text{
+        text-align: center;
+        margin: 5px 0px;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+    .hamMenu{
+        right: 0px;
+    }
+    
+    
+}
+@media(min-width: 500px) and (max-width:639px){
+    .images{
+        height: 120px;
+        width: 120px;
+        flex-basis: calc(50% - 10px);
+    }
+    .image-text{
+        text-align: center;
+        font-size: 0.75rem;
+    }
+    .imageContainer{
+        width:50%;
+    }
+    #prevBtn{
+        margin-right: 9rem;
+    }
+    .buttons{
+        font-size: 1rem;
+        padding: 5px 15px;
+        background-color:#FFF1C2;
+        cursor: pointer
+    }
+    .modal p{
+        padding: 5px 0px;
+        margin-top: 2rem;
+        line-height: 150%;
+        text-align: justify;
+    }
+    nav{
+        padding:1rem;
+        display:flex;
+        background-color:#86673E;
+    }
+    .navbar a {
+        display: none;
+    }
+    .offScreenMenu{
+        width: 250px;
+        z-index: 1;
+    }
+    .offScreenMenu a{
+        font-size: 1.5rem;
+    }
+    .imageContainer{
+        width: 50%;
+    }
+    .image-text{
+        text-align: center;
+        margin: 5px 0px;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+    .hamMenu{
+        right: 0px;
+    }
+    
+}
+@media(min-width: 382px) and (max-width: 499px){
+    .images{
+        height: 100px;
+        width: 100px;
+        flex-basis: calc(55% - 10px);
+    }
+    #prevBtn{
+        margin-right:5rem;
+    }
+    .buttons{
+        font-size: 1rem;
+        padding: 5px 10px;
+        background-color:#FFF1C2;
+        cursor: pointer
+    }
+    .modal p{
+        padding: 5px 0px;
+        margin-top: 2rem;
+        line-height: 150%;
+        text-align: justify;
+    }
+    nav{
+        padding:1rem;
+        display:flex;
+        background-color:#86673E;
+    }
+    .navbar a {
+        display: none;
+    }
+    .offScreenMenu{
+        width: 250px;
+        z-index: 1;
+    }
+    .offScreenMenu a{
+        font-size: 1.5rem;
+    }
+    .imageContainer{
+        width: 55%;
+    }
+    .image-text{
+        text-align: center;
+        margin: 5px 0px;
+        font-weight: bold;
+        font-size: 0.6rem;
+    }
+    .hamMenu{
+        right: 0px;
+    }
+    
+       
+}
+@media(max-width: 381px){
+    .images{
+        height: 100px;
+        width: 100px;
+        flex-basis: calc(70% - 5px);
+    }
+    .image-text{
+        text-align: center;
+        font-size: 0.6rem;
+    }
+    .imageContainer{
+        width: 70%;
+        gap:5px;
+    }
+
+    nav{
+        padding:1rem;
+        display:flex;
+        background-color:#86673E;
+    }
+    .navbar a {
+        display: none;
+    }
+    .offScreenMenu{
+        width: 250px;
+        z-index: 1;
+    }
+    .offScreenMenu a{
+        font-size: 1.5rem;
+    }
+    .imageContainer{
+        width: 70%;
+    }
+    .image-text{
+        text-align: center;
+        margin: 5px 0px;
+        font-weight: bold;
+        font-size: 0.7rem;
+    }
+    .buttons{
+        font-size: 1rem;
+        padding: 10px 20px;
+        background-color:#FFF1C2;
+        cursor: pointer
+    }
+    .buttons:hover{
+        background-color:#fcdf83;
+        font-size: 0.8rem;
+    }
+    #prevBtn{
+        margin-right: 5rem;
+    }
+    .modal{
+        width:60%;
+        height:65%
+        
+    }
+    .modal h1{
+        font-size: 2.5rem
+    }
+    .modal p{
+        padding: 0px 0px;
+        margin-top: 2rem;
+        line-height: 150%;
+        text-align: justify;
+    }
+    .hamMenu{
+        right: 0px;
+    }
+}
+
+

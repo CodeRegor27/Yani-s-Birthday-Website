@@ -8,25 +8,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Warang+Citi&family=Russo+One&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
     <title>Happy Birthday!</title>
 </head>
 <body>
+    <div class="offScreenMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="greetings.html">Greetings</a></li>
+        </ul>
+    </div>
     <nav class="navbar">
         <div>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Greetings</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="greetings.html">Greetings</a></li>
             </ul>
+        </div>
+        <div class="hamMenu">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </nav>
 
-    <div class="container">
+    <div id= 'first' class="container">
         <div class="text">
             <h3>Hello my love!</h3>
             <h1>Happy 21st Birthday! &lt;3 </h1>
         </div>
 
-        <div class="image">
+        <div class="image" >
             <img src="we.jpg" alt="Elyani Photo">
         </div>
     </div>
@@ -38,8 +51,42 @@
         Friends
         </h1>
         <button>
-            Read it
+            <a href="greetings.html">Read it</a>
         </button>
     </div>
+    <script src="app.js"></script>
+    <script>
+    
+        // Function to launch confetti
+        function launchConfetti() {
+            // Trigger a burst of confetti
+            var duration = 5 * 1000; // Confetti for 5 seconds
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+
+        // Onload event listener to trigger confetti
+        window.onload = function() {
+            launchConfetti(); // Launch confetti on page load
+        };
+    
+    </script>
 </body>
 </html>
