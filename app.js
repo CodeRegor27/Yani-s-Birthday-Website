@@ -10,9 +10,7 @@ const closeBtn = document.querySelector('.close');
 const pagination = document.querySelector('.pagination');
 const modalClosing = document.getElementById('closing');
 
-const titlesPerPage = 1; // Display 1 title per page
-let currentPage = 1;
-let maxPage = 4
+
 
 const greetings = [
     {
@@ -165,13 +163,15 @@ const greetings = [
     dataId: 15,
     title: 'Church Friends',
     image: 'King.jpg',
-    message: ``,
+    message: `THE MASIPAG, THE MAINITIN ANG ULO, THE PIKON AND LAST BUT NOT THE LEAST THE CARING FRIEND. SYEMPRE, HAPPY BIRTHDAY KASI BIRTHDAY MO! 🥳🥳🥳 YUCK 21 NA SI ACCLA! TANDAAN MO LANG LOLA PAG KULANG NA KULANG KANA SA KAGANDAHAN CHAT KALANG SAAKIN, KING NA 'TO, AKO NA BAHALA.  MASHADO NA KASING MARAMI EH. KALMAHAN NIYO SA MAGIGING PAMANGKIN NAMIN KAYA KO PA NAMAN MAG WAIT UNTIL NEXT YEAR. 🥳🥳🥳`,
     sender: `King`,
-    closing:``
+    closing:`King "malagu" Jered <br> XOXO`
 },
 ]
 
 window.onload = function () {
+    let currentPageImageGallery = 1;
+    let maxPageImageGallery = 4
     const displayPhoto = (items) => {
         imageContainer.innerHTML = items.map((item) => {
             const { image, sender, dataId } = item;
@@ -191,7 +191,7 @@ window.onload = function () {
     function displayPage(pageNumber) {
         const items = greetings.filter(item => item.id == pageNumber);
 
-        if (pageNumber < 1 || pageNumber > maxPage) return;
+        if (pageNumber < 1 || pageNumber > maxPageImageGallery) return;
 
         const titleElement = document.getElementById('title');
         titleElement.textContent = items[0].title;
@@ -209,20 +209,20 @@ window.onload = function () {
         const nextButton = document.getElementById('nextBtn');
 
         prevButton.classList.toggle('disabled', pageNumber === 1);
-        nextButton.classList.toggle('disabled', pageNumber === maxPage);
+        nextButton.classList.toggle('disabled', pageNumber === maxPageImageGallery);
     }
 
     document.getElementById('prevBtn').addEventListener('click', () => {
-        if (currentPage > 1) {
-            currentPage--;
-            displayPage(currentPage);
+        if (currentPageImageGallery > 1) {
+            currentPageImageGallery--;
+            displayPage(currentPageImageGallery);
         }
     });
 
     document.getElementById('nextBtn').addEventListener('click', () => {
-        if (currentPage < maxPage) {
-            currentPage++;
-            displayPage(currentPage);
+        if (currentPageImageGallery < maxPageImageGallery) {
+            currentPageImageGallery++;
+            displayPage(currentPageImageGallery);
         }
     });
 
@@ -252,12 +252,12 @@ window.onload = function () {
         const selected = greetings.find(item => item.dataId == currentPhotoDataId);
 
         if (selected) {
+            modalPrevBtn.classList.toggle('disabled', currentPage === 1);
+            modalNextBtn.classList.toggle('disabled', currentPage === totalPages);
             pagination.style.display = 'flex'
             modalTitle.textContent = selected.pagesSender[currentPage-1];
             modalMessage.textContent = selected.message[currentPage - 1];
-            modalClosing.textContent = selected.closing[currentPage-1];
-            modalPrevBtn.classList.toggle('disabled', currentPage === 1);
-            modalNextBtn.classList.toggle('disabled', currentPage === totalPages);
+            modalClosing.textContent = selected.closing[currentPage-1];   
         }
     };
 
