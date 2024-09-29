@@ -137,7 +137,6 @@ body {
     height: 3rem;
     width: 6rem;
     padding: 5px 10px;
-    background-color:#FFF1C2;
     cursor: pointer;
     color: black;
 }
@@ -204,7 +203,6 @@ body {
     width: 5.5rem;
     height: 2.5rem;
     padding: 5px 10px;
-    background-color: #fcdf83;
     cursor: pointer;
     color: black;
 }
