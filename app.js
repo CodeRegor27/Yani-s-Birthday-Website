@@ -116,9 +116,12 @@ const greetings = [
     dataId: 10,
     title: 'High School Friends',
     image: 'Allana.jpg',
-    message: ``,
+    message: `  happy happy happy birthday dianneee
+                i am so grateful to have a such an amazing friend! I know i'm not very affectionate but i hope i'm showing you enough how thankful i am to be your friend. 
+                I hope all your wishes come true. I am so happy for you and i'm so proud of what you've become. 
+                Wishing you a day filled with love and all the things that make you smile <3`,
     sender: `Allana`,
-    closing:``
+    closing:`Yana`
 },
 {
     id: 3,
