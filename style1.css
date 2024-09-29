@@ -138,7 +138,8 @@ body {
     width: 6rem;
     padding: 5px 10px;
     background-color:#FFF1C2;
-    cursor: pointer
+    cursor: pointer;
+    color: black;
 }
 .buttons:hover:active{
     background-color:#fcdf83;
@@ -205,6 +206,7 @@ body {
     padding: 5px 10px;
     background-color: #fcdf83;
     cursor: pointer;
+    color: black;
 }
 .close{
     color: #aaa;
