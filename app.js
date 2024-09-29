@@ -8,6 +8,7 @@ const modalPrevBtn = document.getElementById('modalPrevBtn');
 const modalNextBtn = document.getElementById('modalNextBtn');
 const closeBtn = document.querySelector('.close');
 const pagination = document.querySelector('.pagination');
+const video = document.getElementById('greetingsVideo')
 const modalClosing = document.getElementById('closing');
 
 
@@ -18,9 +19,8 @@ const greetings = [
         dataId: 1,
         title: 'Family',
         image: 'Mama_Papa.jpg',
-        pages: ['page 1', 'page 2'],
-        pagesSender: [`Mama`,`Papa`],
-        message: [``,``],
+        message: ``,
+        senderVideo: 'mama_papa.mp4',
         sender: `Mama & Papa`,
         closing:``
 },
@@ -87,8 +87,20 @@ const greetings = [
     closing:``
 },
 {
-    id: 2,
+    id: 1,
     dataId: 8,
+    title: 'Family',
+    image: 'pamangkins.jpg',
+    message: ``,
+    pages:[`page 1`,'page 2'],
+    pagesSender: [`Hailey & Xhylah`,`Pamangkins`],
+    senderVideo:[`pamangkins.mp4`,`pamangkins_1.mp4`],
+    sender: `Pamangkins`,
+    closing:``
+},
+{
+    id: 2,
+    dataId: 9,
     title: 'Best Friend',
     image: 'Kim.jpg',
     message: `  I've known you since we were kids, and I'm a breathing witness to how you turned into a graceful, young lady. You're one of the purest souls that I've had the pleasure of meeting in this lifetime. And I'm lucky that you are my best friend. God must've seen how fucked up my life decisions are and will be in the future, kaya he said, "Fine, I'll allow you two to be besties." 😆 And honestly? Best decision, boss JC.
@@ -101,7 +113,7 @@ const greetings = [
 },
 {
     id: 3,
-    dataId: 9,
+    dataId: 10,
     title: 'High School Friends',
     image: 'Allana.jpg',
     message: ``,
@@ -110,7 +122,7 @@ const greetings = [
 },
 {
     id: 3,
-    dataId: 10,
+    dataId: 11,
     title: 'High School Friends',
     image: 'Joan.jpg',
     message: ``,
@@ -119,7 +131,7 @@ const greetings = [
 },
 {
     id: 3,
-    dataId: 11,
+    dataId: 12,
     title: 'High School Friends',
     image: 'charisse.jpg',
     message: `  Yowww, Meyy!!!!
@@ -130,7 +142,7 @@ const greetings = [
 },
 {
     id: 3,
-    dataId: 12,
+    dataId: 13,
     title: 'High School Friends',
     image: 'Joel.jpg',
     message: ``,
@@ -139,7 +151,7 @@ const greetings = [
 },
 {
     id: 4,
-    dataId: 13,
+    dataId: 14,
     title: 'Church Friends',
     image: 'Misaily.jpg',
     message: ``,
@@ -148,7 +160,7 @@ const greetings = [
 },
 {
     id: 4,
-    dataId: 14,
+    dataId: 15,
     title: 'Church Friends',
     image: 'KC.jpg',
     message: `  HI MADAMMMMMM!!! 
@@ -160,7 +172,7 @@ const greetings = [
 },
 {
     id: 4,
-    dataId: 15,
+    dataId: 16,
     title: 'Church Friends',
     image: 'King.jpg',
     message: `THE MASIPAG, THE MAINITIN ANG ULO, THE PIKON AND LAST BUT NOT THE LEAST THE CARING FRIEND. SYEMPRE, HAPPY BIRTHDAY KASI BIRTHDAY MO! 🥳🥳🥳 YUCK 21 NA SI ACCLA! TANDAAN MO LANG LOLA PAG KULANG NA KULANG KANA SA KAGANDAHAN CHAT KALANG SAAKIN, KING NA 'TO, AKO NA BAHALA.  MASHADO NA KASING MARAMI EH. KALMAHAN NIYO SA MAGIGING PAMANGKIN NAMIN KAYA KO PA NAMAN MAG WAIT UNTIL NEXT YEAR. 🥳🥳🥳`,
@@ -232,17 +244,32 @@ window.onload = function () {
         const photo = event.target;
         currentPhotoDataId = photo.getAttribute('data-id');
         const selected = greetings.find(item => item.dataId == currentPhotoDataId);
-
+    
+        // Stop the current video if it exists
+        const currentVideo = document.querySelector('video');
+        if (currentVideo) {
+            currentVideo.pause();         // Pause the video
+            currentVideo.currentTime = 0; // Reset video time
+            currentVideo.remove();        // Remove the current video element
+        }
+    
         if (selected) {
-            if(!!selected.pages){
+            if (selected.pages) {
                 totalPages = selected.pages.length;
                 currentPage = 1;
                 updateModalContent();
-            }else{
-            modalTitle.textContent = selected.sender;
-            modalMessage.textContent = selected.message;
-            modalClosing.innerHTML = selected.closing;
-            pagination.style.display = 'none'
+            } else {
+                modalTitle.textContent = selected.sender;
+                modalMessage.textContent = selected.message;
+                modalClosing.innerHTML = selected.closing;
+    
+                if (selected.senderVideo) {
+                    // Create a new video element
+                    video.innerHTML = `<video width="100%" height="80%" controls loop>
+                                         <source src="${selected.senderVideo}" type="video/mp4">
+                                       </video>`;
+                }
+                pagination.style.display = 'none';
             }
             modalContainer.style.display = 'flex';
         }
@@ -257,7 +284,13 @@ window.onload = function () {
             pagination.style.display = 'flex'
             modalTitle.textContent = selected.pagesSender[currentPage-1];
             modalMessage.textContent = selected.message[currentPage - 1];
-            modalClosing.textContent = selected.closing[currentPage-1];   
+            modalClosing.textContent = selected.closing[currentPage-1]; 
+            if (selected.senderVideo){
+                video.innerHTML = `<video class= video width = 100% height = 80% controls loop>
+                                    <source src='${selected.senderVideo[currentPage - 1]}' type= 'video/mp4'
+                                </video>`;
+            }  
+            
         }
     };
 
@@ -274,9 +307,15 @@ window.onload = function () {
             updateModalContent();
         }
     });
-    console.log(closeBtn)
     function closeModal() {
         modalContainer.style.display = 'none';
+
+        const videoElement = document.querySelector('video');
+        if (videoElement) {
+        videoElement.pause(); // Pause the video
+        videoElement.currentTime = 0; // Reset to the beginning
+    }
+    
     }
     closeBtn.addEventListener('click', closeModal);
 
