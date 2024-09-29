@@ -472,8 +472,7 @@ body {
     .buttons{
         font-size: 1rem;
         padding: 10px 20px;
-        background-color:#FFF1C2;
-        cursor: pointer
+        cursor: pointer;
     }
     .buttons:hover{
         background-color:#fcdf83;
