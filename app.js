@@ -144,15 +144,6 @@ const greetings = [
     closing:`Ur madre friend <br> Sister Bongz`
 },
 {
-    id: 3,
-    dataId: 13,
-    title: 'High School Friends',
-    image: 'Joel.jpg',
-    message: ``,
-    sender: `Joel`,
-    closing:``
-},
-{
     id: 4,
     dataId: 14,
     title: 'Church Friends',
