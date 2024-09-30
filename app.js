@@ -82,9 +82,9 @@ const greetings = [
     dataId: 7,
     title: 'Family',
     image: 'Rani.jpg',
-    message: ``,
+    message: `Happy birthday, te! thank you kasi paparamdam mu kaku atsu kamu lagi keng tabi ku makasuporta. wish ku keka sana maging successful ka para ilibri muku. charot. maging successful ka kasi balu ku ita rin ing buri mu, na maging worth it ngan ing hard work mu. again, happy birthday! 💝`,
     sender: `Rani`,
-    closing:``
+    closing:`Raniella`
 },
 {
     id: 1,
