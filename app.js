@@ -29,11 +29,9 @@ const greetings = [
         dataId: 2,
         title: 'Family',
         image: 'kuya_mafy.jpg',
-        pages: ['page 1', 'page 2', 'page 3', 'page 4'],
-        pagesSender: ['Kuya Mafy', 'Ate Hazel','Hailey','Caleb'],
-        message: [``,``,``,``],
+        message: `Happy Birthday Miss P! Hope you enjoy your day. I love you sister.`,
         sender: `Kuya Mafy & Family`,
-        closing:``
+        closing:`Kuya Mafy`
 },
 {
         id: 1,
@@ -49,9 +47,8 @@ const greetings = [
         dataId: 4,
         title: 'Family',
         image: 'kuya_gran.jpg',
-        pages: ['page 1', 'page 2', 'page 3'],
-        pagesSender: ['Kuya Gran', 'Ate Aileen','Dean'],
-        message: [``,``,``],
+        message: ``,
+        senderVideo: `kuya_grann.mp4`,
         sender: `Kuya Gran & Family`,
         closing:``
 },
@@ -128,9 +125,14 @@ const greetings = [
     dataId: 11,
     title: 'High School Friends',
     image: 'Joan.jpg',
-    message: ``,
+    message: `Hi, Meyer! Happy happy 21st birthdayyyy 🎂🎊.
+I know we are busy na sa mga kaniya kaniya natin ginagawa and because of that hindi na tayo masyado nagkikita. But still, I really appreciate na we are still friends and sinasama niyo pa rin ako sa mga chika and ganap niyo sa buhay. Thank you for being my friend pa rin and I know I always can count on you.
+
+I wanted to say din na I'm so proud of you kasi you're soooo hard woking. Napagsasabay mo ang work and school kahit sobrang stressful pareho. Keep it up, dzai! Malapit ka na rin makapagtapos haha. I always include sa prayers ko ang studies and safety ninyo.
+
+Lastly ante, set mo na yung gala natin. Preferably out of town po sana hehe (not charing). Anyways, enjoy your dayyyyy. I miss you a lot and love youuuu😘😘.`,
     sender: `Joan`,
-    closing:``
+    closing:`Joan Daleeeeee`
 },
 {
     id: 3,
@@ -148,9 +150,9 @@ const greetings = [
     dataId: 14,
     title: 'Church Friends',
     image: 'Misaily.jpg',
-    message: ``,
+    message: `Happy Birthday to the most caring, sweet, and supportive friend! 🎉 Your strength and hardworking spirit inspire everyone around you, and I’m so lucky to have someone like you in my life. May this special day be filled with love, laughter, and all the happiness you truly deserve. Here's to more adventures, endless support, and unforgettable memories together. Have an amazing birthday dayannnn! Love you forever 💖`,
     sender: `Misaily`,
-    closing:``
+    closing:`Misaily`
 },
 {
     id: 4,
@@ -259,7 +261,7 @@ window.onload = function () {
     
                 if (selected.senderVideo) {
                     // Create a new video element
-                    video.innerHTML = `<video width="100%" height="80%" controls loop>
+                    video.innerHTML = `<video width="100%" height="50%" controls loop>
                                          <source src="${selected.senderVideo}" type="video/mp4">
                                        </video>`;
                 }
