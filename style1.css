@@ -199,11 +199,11 @@ body {
 .pagination{
     display:flex;
     justify-content: space-between;
+    margin-top: 5rem;
 }
 .pagination button{
     background-color: #FFF1C2;
     border-radius: 7px;
-    margin-top: 5rem;
     width: 5.5rem;
     height: 2.5rem;
     padding: 5px 10px;
@@ -235,6 +235,7 @@ body {
     font-weight: 100;
     font-family: 'Great Vibes',sans-serif;
 }
+
 
 @media (min-width:1384px) and (max-width:1700px){
     .imageContainer{

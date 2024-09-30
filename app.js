@@ -28,10 +28,13 @@ const greetings = [
         id: 1,
         dataId: 2,
         title: 'Family',
+        pages: [`page 1`, `page 2`],
+        pagesSender: [`Kuya Mafy`, `Kuya Mafy & Ate Hazel`],
         image: 'kuya_mafy.jpg',
-        message: `Happy Birthday Miss P! Hope you enjoy your day. I love you sister.`,
+        message: [`Happy Birthday Miss P! Hope you enjoy your day. I love you sister.`, ``],
+        senderVideo: [``,`Kuya_Mafyy.mp4`],
         sender: `Kuya Mafy & Family`,
-        closing:`Kuya Mafy`
+        closing:[`Kuya Mafy`,``]
 },
 {
         id: 1,
@@ -273,22 +276,26 @@ window.onload = function () {
     
     function updateModalContent() {
         const selected = greetings.find(item => item.dataId == currentPhotoDataId);
-
+    
         if (selected) {
             modalPrevBtn.classList.toggle('disabled', currentPage === 1);
             modalNextBtn.classList.toggle('disabled', currentPage === totalPages);
-            pagination.style.display = 'flex'
-            modalTitle.textContent = selected.pagesSender[currentPage-1];
+            pagination.style.display = 'flex';
+    
+            modalTitle.textContent = selected.pagesSender[currentPage - 1];
             modalMessage.textContent = selected.message[currentPage - 1];
-            modalClosing.textContent = selected.closing[currentPage-1]; 
-            if (selected.senderVideo){
-                video.innerHTML = `<video class= video width = 100% height = 80% controls loop>
-                                    <source src='${selected.senderVideo[currentPage - 1]}' type= 'video/mp4'
-                                </video>`;
-            }  
-            
+            modalClosing.textContent = selected.closing[currentPage - 1];
+    
+            const currentVideo = selected.senderVideo && selected.senderVideo[currentPage - 1];
+            if (currentVideo && currentVideo !== '') {
+                video.innerHTML = `<video class="video" width="100%" height="80%" controls loop>
+                                        <source src='${currentVideo}' type='video/mp4'>
+                                   </video>`;
+            } else {
+                video.innerHTML = '';
+            }
         }
-    };
+    }
 
     modalPrevBtn.addEventListener('click', () => {
         if (currentPage > 1) {
