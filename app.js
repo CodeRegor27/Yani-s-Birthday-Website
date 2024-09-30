@@ -72,7 +72,7 @@ const greetings = [
     title: 'Family',
     image: 'kuya_cy.jpg',
     pages: ['page 1', 'page 2', 'page 3'],
-    pagesSender: ['Kuya Mafy', 'Ate Faith','Bria'],
+    pagesSender: ['Kuya Cy', 'Ate Faith','Bria'],
     message: [``,``,``],
     sender: `Kuya Cy & Family`,
     closing:``
@@ -247,9 +247,9 @@ window.onload = function () {
         // Stop the current video if it exists
         const currentVideo = document.querySelector('video');
         if (currentVideo) {
-            currentVideo.pause();         // Pause the video
-            currentVideo.currentTime = 0; // Reset video time
-            currentVideo.remove();        // Remove the current video element
+            currentVideo.pause();         
+            currentVideo.currentTime = 0; 
+            currentVideo.remove();        
         }
     
         if (selected) {
@@ -263,7 +263,6 @@ window.onload = function () {
                 modalClosing.innerHTML = selected.closing;
     
                 if (selected.senderVideo) {
-                    // Create a new video element
                     video.innerHTML = `<video width="100%" height="50%" controls loop>
                                          <source src="${selected.senderVideo}" type="video/mp4">
                                        </video>`;
@@ -315,8 +314,8 @@ window.onload = function () {
 
         const videoElement = document.querySelector('video');
         if (videoElement) {
-        videoElement.pause(); // Pause the video
-        videoElement.currentTime = 0; // Reset to the beginning
+        videoElement.pause();
+        videoElement.currentTime = 0;
     }
     
     }
