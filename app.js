@@ -71,9 +71,8 @@ const greetings = [
     dataId: 6,
     title: 'Family',
     image: 'kuya_cy.jpg',
-    pages: ['page 1', 'page 2', 'page 3'],
-    pagesSender: ['Kuya Cy', 'Ate Faith','Bria'],
-    message: [``,``,``],
+    message: ``,
+    senderVideo: `kuya_cyy.mp4`,
     sender: `Kuya Cy & Family`,
     closing:``
 },
@@ -263,7 +262,7 @@ window.onload = function () {
                 modalClosing.innerHTML = selected.closing;
     
                 if (selected.senderVideo) {
-                    video.innerHTML = `<video width="100%" height="50%" controls loop>
+                    video.innerHTML = `<video class = "video" controls loop>
                                          <source src="${selected.senderVideo}" type="video/mp4">
                                        </video>`;
                 }
@@ -287,7 +286,7 @@ window.onload = function () {
     
             const currentVideo = selected.senderVideo && selected.senderVideo[currentPage - 1];
             if (currentVideo && currentVideo !== '') {
-                video.innerHTML = `<video class="video" width="100%" height="80%" controls loop>
+                video.innerHTML = `<video class="video" controls loop>
                                         <source src='${currentVideo}' type='video/mp4'>
                                    </video>`;
             } else {

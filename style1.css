@@ -235,6 +235,10 @@ body {
     font-weight: 100;
     font-family: 'Great Vibes',sans-serif;
 }
+.video{
+    height: auto;
+    width: 100%;
+}
 
 
 @media (min-width:1384px) and (max-width:1700px){
